@@ -62,12 +62,15 @@ html {
   background-color: #35495e;
 }
 .container {
+  width: calc(100% - 64px);
+  max-width: 1150px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 600px;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .title {
@@ -83,14 +86,18 @@ html {
     sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 60px;
+  font-size: 30px;
   color: #35495e;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
+  font-size: 24px;
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
@@ -98,5 +105,49 @@ html {
 
 .links {
   padding-top: 15px;
+}
+.field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.fieldset {
+  width: calc(100% - 50px);
+  margin: 0 auto;
+  max-width: 500px;
+  background: #f7f7f7;
+  padding: 20px 20px 5px;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0px 10px 5px rgba(20,20,20,0.3);
+}
+.fieldset legend {
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: #454545;
+  margin: 0 auto;
+}
+.field label {
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  margin-bottom: 3px;
+  color: #404041;
+}
+
+.field button {
+  background: #108775;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  width: 100px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.field button:hover {
+  background: #2F495E;
+  transition: all .2s ease-in-out;
 }
 </style>
