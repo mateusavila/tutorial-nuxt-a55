@@ -19,7 +19,6 @@
         </div>
       </fieldset>
     </form>
-      <!-- <button @click="forceLogin" class="button--green">Forçar login de mentirinha</button> -->
   </div>
 </template>
 
@@ -80,24 +79,24 @@ export default {
 }
 </script>
 <style>
-  .form-login {
-    margin-top: 20px;
-    width: 100%;
-  }
-  .field input {
-    outline: none;
-    width: 100%;
-    padding: 0 10px;
-    height: 45px;
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    transition: all .2s ease-in-out;
-  }
-  .field input:focus {
-    border-color: #bababa;
-    transition: all .2s ease-in-out;
-  }
-  .field input.error {
-    border-color: red;
-  }
+.form-login {
+  margin-top: 20px;
+  width: 100%;
+}
+.field input {
+  outline: none;
+  width: 100%;
+  padding: 0 10px;
+  height: 45px;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  transition: all .2s ease-in-out;
+}
+.field input:focus {
+  border-color: #bababa;
+  transition: all .2s ease-in-out;
+}
+.field input.error {
+  border-color: red;
+}
 </style>

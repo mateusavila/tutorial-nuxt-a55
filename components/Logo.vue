@@ -8,4 +8,10 @@
   max-height: 35px;
   margin-right: 15px;
 }
+@media all and (max-width: 600px) {
+  .NuxtLogo {
+  	max-height: 25px;
+  	margin-right: 15px;
+  }
+}
 </style>

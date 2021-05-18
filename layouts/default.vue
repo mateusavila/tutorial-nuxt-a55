@@ -150,4 +150,16 @@ html {
   background: #2F495E;
   transition: all .2s ease-in-out;
 }
+
+@media all and (max-width: 600px) {
+  .container {
+    width: calc(100% - 30px);
+  }
+  .fieldset {
+    width: 100%;
+  }
+  .title {
+    font-size: 20px;
+  }
+}
 </style>
