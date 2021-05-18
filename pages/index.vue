@@ -27,6 +27,7 @@
 export default {
   data () {
     return {
+      timer: null,
       form: {
         login: '',
         password: ''
@@ -42,21 +43,17 @@ export default {
     login () {
 
       this.error.count = 0;
+      this.error.login = false;
+      this.error.password = false;
 
       if (this.form.login.length < 10) {
         this.error.login = true;
         this.error.count++;
-      } else {
-        this.error.login = false;
       }
-
       if (this.form.password.length < 6) {
         this.error.password = true;
         this.error.count++;
-      } else {
-        this.error.password = false;
-      }
-
+      } 
       if(this.error.count === 0) {
         fetch('https://wp.mateusavila.com.br/wp-json/fake/login', {
           method: 'post',
@@ -64,34 +61,21 @@ export default {
         })
           .then((response) => response.json())
           .then((data) => {
-            // console.log('deu certo', response)
             window.localStorage.setItem('login', JSON.stringify(data))
             this.$router.push({
               path: '/sobre'
             })
           })
           .catch(error => console.log('errou!!!', error))
-          .finally(response => console.log('finalmente!!!', response))
-      } else {
-        return false
       }
-
-      
-    },
-    calculate () {
-      console.log('gerar calculo')
+      // faz uma limpeza de alguns segundos depois do erro do e-mail, para não ficar assustando o usuário
+      if (this.timer) clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.error.login = false
+        this.error.password = false
+      }, 4000)
+      return false
     }
-    // forceLogin () {
-    //   console.log('forceLogin')
-    //   const loginData = {
-    //     login: 'mateus@a55.tech',
-    //     password: '123456'
-    //   }
-    //   window.localStorage.setItem('login', JSON.stringify(loginData))
-    //   this.$router.push({
-    //     path: '/sobre'
-    //   })
-    // }
   }
 }
 </script>
