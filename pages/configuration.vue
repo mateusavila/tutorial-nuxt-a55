@@ -7,12 +7,10 @@
 
 <script>
 export default {
-  middleware: 'auth',
+  layout: 'dashboard',
   data () {
     return {
-      user: {
-        
-      }
+      user: {}
     }
   },
   mounted () {
@@ -20,7 +18,6 @@ export default {
   },
   methods: {
     logoff () {
-      console.log('logoff')
       window.localStorage.removeItem('login')
       this.$router.push({
         path: '/'

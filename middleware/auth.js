@@ -1,9 +1,8 @@
 export default function ({ redirect }) {
 
-  const data = JSON.parse(window.localStorage.getItem('login'))
-  // console.log(data)
+  const userLogged = JSON.parse(window.localStorage.getItem('login'))
 
-  if(!data) {
+  if(!userLogged) {
   	return redirect('/')
   }
   

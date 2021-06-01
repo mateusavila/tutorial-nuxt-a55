@@ -1,9 +1,17 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="dashboard-box">
+    <Header />
+    <div class="dashboard-content">
+      <Nuxt />
+    </div>
   </div>
 </template>
-
+<script>
+export default {
+  name: 'dashboard',
+  middleware: ['auth'],
+}
+</script>
 <style>
 html {
   font-family:
@@ -61,16 +69,10 @@ html {
   color: #fff;
   background-color: #35495e;
 }
-.container-login {
+.container {
   width: calc(100% - 64px);
   max-width: 1150px;
   margin: 0 auto;
-  min-height: 600px;
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
 }
 
 .title {
@@ -149,6 +151,9 @@ html {
 .field button:hover {
   background: #2F495E;
   transition: all .2s ease-in-out;
+}
+.dashboard-content {
+  margin-top: 80px;
 }
 
 @media all and (max-width: 600px) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-login">
     <h1 class="title">
       <Logo /> Recursos Humanos
     </h1>
@@ -62,7 +62,7 @@ export default {
           .then((data) => {
             window.localStorage.setItem('login', JSON.stringify(data))
             this.$router.push({
-              path: '/sobre'
+              path: '/dashboard'
             })
           })
           .catch(error => console.log('errou!!!', error))
