@@ -152,7 +152,7 @@ html {
 }
 
 @media all and (max-width: 600px) {
-  .container {
+  .container-login  {
     width: calc(100% - 30px);
   }
   .fieldset {

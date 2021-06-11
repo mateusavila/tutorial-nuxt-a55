@@ -5,6 +5,7 @@
     </h1>
     <form action="#" method="POST" novalidate class="form-login" @submit.prevent="login">
       <fieldset class="fieldset">
+        <LoginError :error="error" @close="close" />
         <legend>Formulário de Login</legend>
         <div class="field">
           <label for="login">Login</label>
@@ -34,11 +35,19 @@ export default {
       error: {
         login: false,
         password: false,
-        count: 0
+        count: 0,
+        status: false,
+        title: '',
+        text: ''
       }
     }
   },
   methods: {
+    close () {
+      this.error.status = false
+      this.error.title = ''
+      this.error.text = ''
+    },
     login () {
 
       this.error.count = 0;
@@ -58,14 +67,22 @@ export default {
           method: 'post',
           body: JSON.stringify(this.form)
         })
-          .then((response) => response.json())
-          .then((data) => {
+        .then((response) => response.json())
+        .then((data) => {
+          if(data.status) {
             window.localStorage.setItem('login', JSON.stringify(data))
             this.$router.push({
               path: '/dashboard'
             })
-          })
-          .catch(error => console.log('errou!!!', error))
+          }
+          if (!data.status) {
+            this.error.status = true
+            this.error.title = data.title
+            this.error.text = data.text
+          }
+          
+        })
+        .catch(error => console.log('errou!!!', error))
       }
       // faz uma limpeza de alguns segundos depois do erro do e-mail, para não ficar assustando o usuário
       if (this.timer) clearTimeout(this.timer)
