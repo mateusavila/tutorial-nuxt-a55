@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title"><Logo /> Seja bem vindo</h1>
-    <button @click="logoff" class="button--grey center-btn">Forçar logoff</button>
+    <h1 class="title"><Logo /> Configurações</h1>
   </div>
 </template>
 
@@ -16,14 +15,6 @@ export default {
   mounted () {
     this.user = JSON.parse(window.localStorage.getItem('login'))
   },
-  methods: {
-    logoff () {
-      window.localStorage.removeItem('login')
-      this.$router.push({
-        path: '/'
-      })
-    }
-  }
 }
 </script>
 <style>

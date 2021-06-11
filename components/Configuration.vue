@@ -2,8 +2,8 @@
 	<div class="configuration" :class="{'active': status}">
 		<ul>
 			<li><nuxt-link @click.native="reload()" to="/dashboard">Dashboard</nuxt-link></li>
-			<li><nuxt-link @click.native="reload()" to="/configuracoes">Configurações</nuxt-link></li>
-			<li><a href="/" @click.prevent="logoff">Deslogar</a></li>
+			<li><nuxt-link @click.native="reload()" to="/configuration">Configurações</nuxt-link></li>
+			<li><Logoff @logoff="logoff" /></li>
 		</ul>
 	</div>
 </template>
@@ -18,12 +18,8 @@ export default {
 		}
 	},
 	methods: {
-		reload () {
-			this.$emit('reload')
-		},
-		logoff () {
-			this.$emit('logoff')
-    }
+		reload () { this.$emit('reload') },
+		logoff () { this.$emit('logoff') }
 	}
 }
 </script>
@@ -84,6 +80,9 @@ export default {
 	color: #404041;
 	text-decoration: none;
 	transition:  all .2s ease-in-out;
+}
+.configuration a.logoff {
+	color: red;
 }
 .configuration li:last-child a {
 	border-bottom: none;

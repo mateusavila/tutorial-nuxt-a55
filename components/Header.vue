@@ -8,7 +8,7 @@
       <div class="config-area">
         <img :src="user.payload.photo.url" :alt="user.payload.name" :width="user.payload.photo.width" :height="user.payload.photo.height" loading="lazy" @click="status = !status">
         <Configuration 
-          @logoff="deslogar"
+          @logoff="logoff"
           @reload="reload" 
           :status="status" />
       </div>
@@ -37,15 +37,8 @@ export default {
     this.user = JSON.parse(window.localStorage.getItem('login'))
   },
   methods: {
-    deslogar () {
-      window.localStorage.removeItem('login')
-      this.$router.push({
-        path: '/'
-      })
-    },
-    reload () {
-      this.status = !this.status
-    }
+    logoff () { this.$emit('logoff') },
+    reload () { this.status = !this.status }
   }
 }
 </script>

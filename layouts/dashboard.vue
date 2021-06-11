@@ -1,8 +1,11 @@
 <template>
   <div class="dashboard-box">
-    <Header />
+    <Header @logoff="logoff" />
     <div class="dashboard-content">
-      <Nuxt />
+      <Navigation @logoff="logoff" />
+      <div class="dashboard-content-content">
+        <Nuxt />
+      </div>
     </div>
   </div>
 </template>
@@ -10,6 +13,14 @@
 export default {
   name: 'dashboard',
   middleware: ['auth'],
+  methods: {
+    logoff () {
+      window.localStorage.removeItem('login')
+      this.$router.push({
+        path: '/'
+      })
+    }
+  }
 }
 </script>
 <style>
@@ -153,7 +164,16 @@ html {
   transition: all .2s ease-in-out;
 }
 .dashboard-content {
-  margin-top: 80px;
+  margin-top: 60px;
+  min-height:  100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.dashboard-content-content {
+  padding-top: 40px;
+  width: calc(100% - 250px);
 }
 
 @media all and (max-width: 600px) {
