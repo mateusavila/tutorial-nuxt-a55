@@ -4,6 +4,10 @@
       <div class="logo-text">
         <Logo />
         <p>| Dashboard</p>
+        <form action="#" method="post" @submit.prevent="makeSearch">
+          <input type="search" name="search" v-model="search" placeholder="Digite sua busca">
+          <button type="submit">busca</button>
+        </form>
       </div>
       <div class="config-area">
         <img :src="user.payload.photo.url" :alt="user.payload.name" :width="user.payload.photo.width" :height="user.payload.photo.height" loading="lazy" @click="status = !status">
@@ -20,6 +24,7 @@
 export default {
   data () {
     return {
+      search: '',
       status: false,
       user: {
         payload: {
@@ -37,6 +42,16 @@ export default {
     this.user = JSON.parse(window.localStorage.getItem('login'))
   },
   methods: {
+    makeSearch () {
+      // console.log('O termo buscado é ' + this.search)
+      fetch('https://wp.mateusavila.com.br/wp-json/wp/v2/posts?slug='+this.search)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          
+        })
+        .catch(error => console.log('errou!!!', error))
+    },
     logoff () { this.$emit('logoff') },
     reload () { this.status = !this.status }
   }
